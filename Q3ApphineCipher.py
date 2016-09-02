@@ -1,26 +1,33 @@
 #!/usr/bin/python3
-
+import re
 def main():
-    
     letters = {'a':0, 'b':1, 'c':2 , 'd':3 , 'e':4, 'f':5 , 'g':6, 'h':7, 'i':8, 'j':9, 'k':10, 'l':11, 'm':12, 'n':13, 
-               'o':14, 'p':15 , 'q':16 , 'r':17, 's':18 , 't':19 , 'u':20, 'v':21, 'w':22 , 'x':23, 'y':24 , 'z':25, ' ':26 
-               ,'#':27,'@':28}
+               'o':14, 'p':15 , 'q':16 , 'r':17, 's':18 , 't':19 , 'u':20, 'v':21, 'w':22 , 'x':23, 'y':24 , 'z':25, 'A':26
+               ,'B':27, 'C':28, 'D':29 , 'E':30, 'F':31, 'G':32 , 'H':33 , 'I':34, 'J':35 , 'K':36 ,'L':37 ,'M':38 ,'N':39,
+               'O':40, 'P':41, 'Q':42 ,'R':43 ,'S':44 ,'T':45 ,'U':46, 'V':47, 'W':48, 'X':49, 'Y':50 ,'Z':51 ,' ':52}
     #a is the key and b denotes the shift taking place
-    a ,b = 2,4
+    a ,b = 5,8
     
-    input_string = input('Enter a string to encrypt containing letters a-z and space :')
-    cipher_string,decrypted_plain_string = '',''
+    input_string = input('Enter a string to encrypt containing alphabets.Numbers and special characters are not allowed. Space is allowed: ')
+    match_val = re.match("^[a-zA-Z ]*$", input_string, 0)
     
-    for letter in input_string:
-        cipher_string = cipher_string + EncryptCharacter(letter, letters, a, b)
-    
-    print ('Encrypted string : ', cipher_string)
-    
-    for c_letter in cipher_string:
-        decrypted_plain_string = decrypted_plain_string + DecryptCharacter(c_letter, letters, a, b)
-    print ('Decrypted original string :', decrypted_plain_string)
-       
-
+    if match_val is not None:
+        cipher_string,decrypted_plain_string = '',''
+        
+        for letter in input_string:
+            cipher_string = cipher_string + EncryptCharacter(letter, letters, a, b)
+        
+        print ('Encrypted string : ', cipher_string)
+        
+        for c_letter in cipher_string:
+            decrypted_plain_string = decrypted_plain_string + DecryptCharacter(c_letter, letters, a, b)
+            
+        print('Value of a :' ,a)
+        print('Value of b :' ,b)
+        print ('Decrypted original string :', decrypted_plain_string)
+    else:
+        print('You entered a invalid character')      
+#Function to decrypt the characters
 def DecryptCharacter(encrypt_char, letter_set, a, b):
     #P = a'(x)-b mod p
     #a' = a^(p-2) mod n
@@ -38,7 +45,8 @@ def DecryptCharacter(encrypt_char, letter_set, a, b):
                 return str(key)
     else:
         return "Please change value of a such that a & n are coprime numbers, n is a prime number, n>a"
-    
+
+#Function to encrypt an input character     
 def EncryptCharacter(plain_char, letter_set,a,b):
     # E(x) = (a(x) + b) mod p where a and p should be co-prime
     x = letter_set.get(plain_char)
