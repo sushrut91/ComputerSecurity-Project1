@@ -19,7 +19,7 @@ def main():
                     rev_mod = (a ** (p-2)) % p
                     print('Reverse modulus of of a is: ',rev_mod)
                     check_ans = (a * rev_mod) % p
-                    print('Checking the answer a * a(inverse) = ({} * {}) % {} yealds answer : {}'
+                    print('Checking the answer a * a(inverse) = ({} * {}) % {} yields answer : {}'
                           .format( a, rev_mod, p,check_ans ))
                 else:
                     print('p should be a prime number to calculate a inverse')
