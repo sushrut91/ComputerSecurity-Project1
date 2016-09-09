@@ -9,13 +9,12 @@ def main():
         if a < 0 or p < 0:
             print ('Values of a and p should be greater than 0')
         else:
-            mod_val = a % p
-            print('a mod p =', mod_val)
-            
+            mod_val = a % p           
             if a > p:
-                print('Value of a < p')
+                print('Error..Value of a < p')
             else:
                 if isPrime(p):
+                    print('a mod p =', mod_val)
                     rev_mod = (a ** (p-2)) % p
                     print('Reverse modulus of of a is: ',rev_mod)
                     check_ans = (a * rev_mod) % p
@@ -25,7 +24,7 @@ def main():
                     print('p should be a prime number to calculate a inverse')
         
     except ValueError:
-        print('Please enter valid integer values only for a & p')
+        print('Please enter valid integer values for a & p')
     except ZeroDivisionError:
         print('Please enter p > 0')
   
