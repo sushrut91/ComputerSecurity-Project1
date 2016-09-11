@@ -1,0 +1,26 @@
+This program requires the execution console to be in UTF-8 encoding.
+This can be achieved by:
+
+**On windows :
+1)Run cmd.exe
+2)type command 'chcp 65001' without the quotes to change cmd prompt to support unicode.
+
+**On linux environment :
+Refer the below link
+https://perlgeek.de/en/article/set-up-a-clean-utf8-environment
+
+This program should only be run in Python3 environment.
+
+Please run the assignment programs using the following procedure:
+1.Navigate to the assignment working directory
+2. python <name_of_the_file.py>
+
+* Please note that once python is correctly installed and the classpath is setup correctly, the word 'python' is itself a command.
+* Please note that these programs will not compile if python2 is used.
+
+You will see the output of the program on the console. i.e windows or linux.
+In case of any problems running the programs, please contact me.
+
+Thank you,
+sushrut kanetkar
+srk44@psu.edu
