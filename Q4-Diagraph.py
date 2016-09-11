@@ -19,8 +19,8 @@ def main():
     c = input('Enter the value of c : ')
     d = input('Enter the value of d : ')
     
-    if re.match('^[0-9]$',a,0) is None or re.match('^[0-9]$',b,0) is None or re.match('^[0-9]$',c,0) is None or re.match('^[0-9]$',d,0) is None:
-        print('Only numeric integer values allowed. Enter an integer between 0-9. Please rerun the program.')
+    if re.match('^-?[0-9]*$',a,0) is None or re.match('^-?[0-9]*$',b,0) is None or re.match('^-?[0-9]*$',c,0) is None or re.match('^-?[0-9]*$',d,0) is None:
+        print('Only numeric integer values allowed. Enter an integer having digits 0-9. Please rerun the program.')
         return -1
     
     #Append a space if there are odd no of characters
@@ -41,14 +41,17 @@ def DecryptDiagraph(a,b,c,d,cipher_string,letters):
     #inverting matrix, find modulur inverse
     n = len(letters)
     determinent = (a * d) - (b * c)
-    if determinent > 0 :
+    if determinent == 0 :
+        return 'Determinent value of matrix was found to be 0. Please retry using new values for keys.'
+    else:
         x=1
         while True:
             if (determinent * x) % n  == 1 :
                 break
-            if x> determinent:
-                return 'Error calculating modular inverse. Please retry with new values.'
+            if x> determinent+500:
+                return 'Error calculating modular inverse as this leads to infinite loops. Please retry with new smaller values.'
             x = x + 1
+            
         a , d = d * x,  a * x
         b = -b * x
         c = -c * x
@@ -73,8 +76,8 @@ def DecryptDiagraph(a,b,c,d,cipher_string,letters):
                 if num == value:
                     plaintext = plaintext + str(key)
         return plaintext
-    else:
-        return 'Determinent value of matrix was found to be 0. Please retry using new values for keys.'
+    
+        
             
 def EncyptDiagraph(a,b,c,d,input_string, letters):
     i = 0
