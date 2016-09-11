@@ -3,7 +3,7 @@
 
 def main():
 
-    str = input('Enter a message : ')
+    str = input('Enter a message to encrypt. Block length is each character : ')
    
     try:
         e = int(input('Enter a value for e(public key): '))
