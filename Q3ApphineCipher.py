@@ -3,15 +3,13 @@ import re
 def main():
     letters = {'a':0, 'b':1, 'c':2 , 'd':3 , 'e':4, 'f':5 , 'g':6, 'h':7, 'i':8, 'j':9, 'k':10, 'l':11, 'm':12, 'n':13, 
                'o':14, 'p':15 , 'q':16 , 'r':17, 's':18 , 't':19 , 'u':20, 'v':21, 'w':22 , 'x':23, 'y':24 , 'z':25,' ':26}
-    #a is the key and b denotes the shift taking place
-    a ,b = 5,8
     
-    input_string = input('Enter a string to encrypt containing alphabets.\nNumbers and special characters are not allowed. \nSpace is allowed: ')
-    match_val = re.match("^[a-zA-Z ]*$", input_string, 0)
+    input_string = input('Enter a string to encrypt containing small case alphabets.\nNumbers and special characters are not allowed. \nSpace is allowed: ')
+    match_val = re.match("^[a-z ]*$", input_string, 0)
     
     try:
-        a = int(input('Enter key1 (a): '))
-        b = int(input('Enter key2 (b): '))
+        a = int(input('Enter key1 (a). Only integers allowed: '))
+        b = int(input('Enter key2 (b). Only integers allowed: '))
         if match_val is not None:
             cipher_string,decrypted_plain_string = '',''
             
@@ -77,6 +75,8 @@ def AreRelativePrime(n1,n2):
             n2 = n1
             n1 = swap
         remainder = n1
+        if n2 < 0:
+            n2 = -n2
         while n2 > 1:
             remainder = n1 % n2
             n1 = n2
